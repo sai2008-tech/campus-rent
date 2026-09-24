@@ -1,4 +1,5 @@
 const express = require("express");
+const authMiddleware = require("../middleware/auth");
 
 const router = express.Router();
 
@@ -13,7 +14,7 @@ const {
 router.post("/", createRental);
 
 // Get all rentals
-router.get("/", getRentals);
+router.get("/", authMiddleware, getRentals);
 
 // Get one rental
 router.get("/:id", getRentalById);
